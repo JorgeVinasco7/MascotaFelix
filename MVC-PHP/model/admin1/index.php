@@ -51,9 +51,9 @@ if(isset($_POST['btncerrar']))
             <ul class="menu wrapper" >
     
                 <li class="first-item">
-                    <a href="#">
+                    <a href="AgregarUsuario.php">
                         <img src="img/analisis.png" alt="" class="imagen">
-                        <span class="text-item">OPCION 1</span>
+                        <span class="text-item">Crear tipo de usuario</span>
                         <span class="down-item"></span>
                     </a>
                 </li>
