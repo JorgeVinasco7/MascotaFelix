@@ -29,6 +29,7 @@ if($_POST["inicio"])
 {
 	// inicia sesion para los usuarios
     //parte del codigo para validar
+    // hacemos un cambio para llevarlo a la nube
 	$doc = $_POST["doc"];
     $cor = $_POST["cor"];
 	$sql="select * from usuario where identificacion = '$doc'"; 
