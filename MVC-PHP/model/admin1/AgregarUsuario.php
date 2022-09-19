@@ -91,6 +91,7 @@ if(isset($_POST['btncerrar']))
                 <td colspan="2"><input type="submit" name="btnadd" value="Guardar"></td>
                 <input type="hidden" name="btnguardar" value="frmadd">
              </tr>
+             <input type="date">
            </form>
         </table>        
         
