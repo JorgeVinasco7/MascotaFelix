@@ -14,7 +14,7 @@ $usua = mysqli_fetch_assoc($usuarios);
 			<?php echo $usua['nombre']?>
 		</span>
 <?php 
-/* agregamos un mensaje en el codigo para actualizar en git*/
+/* agregamos un mensaje en el codigo para actualizar en git y asi poderlo manejar*/
 if(isset($_POST['btncerrar']))
 {
 	session_destroy();
