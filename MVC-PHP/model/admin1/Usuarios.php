@@ -7,19 +7,29 @@ $sql = "SELECT * FROM usuario, tipo_usuario WHERE identificacion = '".$_SESSION[
 $usuarios = mysqli_query($mysqli, $sql) or die(mysqli_error());
 $usua = mysqli_fetch_assoc($usuarios);
 ?>
+<?php
+//consulta para los tipos de usuarios
+$sql1 = "SELECT * FROM tipo_usuario";
+$tp_usu = mysqli_query($mysqli, $sql1) or die(mysqli_error());
+$usua1 = mysqli_fetch_assoc($tp_usu);
+
+$sql2 = "SELECT * FROM usuario";
+$tp_usu2 = mysqli_query($mysqli, $sql2) or die(mysqli_error());
+$usua2 = mysqli_fetch_assoc($tp_usu2);
+?>
 
 <?php
 if ((isset($_POST["btnguardar"])) && ($_POST["btnguardar"] == "frmadd")) {
-    $tp=$_POST ['Tipo_usu'];
-    $sqladd="SELECT *FROM tipo_usuario WHERE tipo_usuario='$tp'";
+    $tp=$_POST ['Doc'];
+    $sqladd="SELECT *FROM usuario WHERE identificacion='$tp'";
     $query = mysqli_query($mysqli,$sqladd);
     $fila = mysqli_fetch_assoc($query);
     if($fila){
         echo '<script>alert (" El usuario ya existe ");</script>';
         echo '<script>window.location="AgregarUsuario.php"</script>';
     }
-    else 
-       if($_POST['Tipo_usu']==""){
+    else
+       if($_POST['Doc']=="" || $_POST['Nom']=="" || $_POST['Ape']=="" || $_POST['Dir']=="" || $_POST['Tel']=="" || $_POST['Corr']=="" || $_POST['pass']=="" || $_POST['Tar']=="" || $_POST['Id_tp']=="" || $_POST['id_estado']==""){
         echo '<script>alert ("Existen campos vacios");</script>';
         echo '<script>window.location="AgregarUsuario.php"</script>';
     }
@@ -71,7 +81,7 @@ if(isset($_POST['btncerrar']))
         <table class="centrar">
            <form method="POST" name="frmadd" autocomplete="off">
              <tr>
-                <td colspan="2"> Documento de identidad: </td>
+                <td colspan="2">Tipos de usuarios</td>
              </tr>
              <tr>
                 <td>Identificador:</td>
@@ -106,11 +116,35 @@ if(isset($_POST['btncerrar']))
                 <td>Targeta profesional:</td>
                 <td><input type="number" name="Tar" placeholder="Ingrese el numero targeta profesional" value="0"></td>
             </tr>
+            
              <tr>
                 <td>Tipo usuario:</td>
                 <td>
                   <select name="Id_tp">
                      <option value="">Seleccione una opcion </option>
+                     <?php
+                     do {                  
+                     ?>
+                     <option value="<?php echo($usua1['id_tipo_usuario'])?>"><?php echo($usua1['tipo_usuario'])?>
+                      <?php
+                     }while($usua1=mysqli_fetch_assoc($tp_usu));
+                      ?>
+                  </select> 
+                </td>
+             </tr>
+
+             <tr>
+                <td>Tipo Estado:</td>
+                <td>
+                  <select name="id_estado">
+                     <option value="">Seleccione una opcion </option>
+                     <?php
+                     do {                  
+                     ?>
+                     <option value="<?php echo($usua2['usuario'])?>"><?php echo($usua2['id_estado'])?>
+                      <?php
+                     }while($usua2=mysqli_fetch_assoc($tp_usu2));
+                      ?>
                   </select> 
                 </td>
              </tr>
