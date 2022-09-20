@@ -66,23 +66,58 @@ if(isset($_POST['btncerrar']))
 </head>
     <body onload="frmadd.Tipo_usu.focus()">
         <section class="title">
-            <h1>Formulario de creacion tipo usuario:<?php echo $usua['tipo_usuario']?></h1>
+            <h1>Formulario crear usuarios:<?php echo $usua['tipo_usuario']?></h1>
         </section>
         <table class="centrar">
            <form method="POST" name="frmadd" autocomplete="off">
              <tr>
-                <td colspan="2"> tipos de usuarios </td>
+                <td colspan="2"> Documento de identidad: </td>
              </tr>
              <tr>
                 <td>Identificador:</td>
-                <td><input type="text" readonly></td>
+                <td><input type="text" name="Doc" placeholder="Ingrese su documento"></td>
              </tr>
 
              <tr>
-                <td>Tipo Usuario:</td>
-                <td><input type="text" name="Tipo_usu" placeholder="Ingrese tipo usuario" style="text-transform:uppercase;"></td>
+                <td>Nombres:</td>
+                <td><input type="text" name="Nom" placeholder="Ingrese los Nombres" style="text-transform:uppercase;"></td>
              </tr>
-
+             <tr>
+                <td>Apellidos:</td>
+                <td><input type="text" name="Ape" placeholder="Ingrese los Apellidos" style="text-transform:uppercase;"></td>
+             </tr>
+             <tr>
+                <td>Direccion:</td>
+                <td><input type="text" name="Dir" placeholder="Ingrese la direccion" style="text-transform:uppercase;"></td>
+             </tr>
+             <tr>
+                <td>Telefono:</td>
+                <td><input type="number" name="Tel" placeholder="Ingrese el numero telefonico"></td>
+             </tr>
+             <tr>
+                <td>Correo:</td>
+                <td><input type="email" name="Corr" placeholder="Ingrese el Email" style="text-transform:uppercase;"></td>
+             </tr>
+             <tr>
+                <td>Password:</td>
+                <td><input type="password" name="pass" placeholder="Ingrese el password"></td>
+             </tr>
+             <tr>
+                <td>Targeta profesional:</td>
+                <td><input type="number" name="Tar" placeholder="Ingrese el numero targeta profesional" value="0"></td>
+            </tr>
+             <tr>
+                <td>Tipo usuario:</td>
+                <td>
+                  <select name="Id_tp">
+                     <option value="">Seleccione una opcion </option>
+                  </select> 
+                </td>
+             </tr>
+             <tr>
+                <td>Fecha:</td>
+                <td> <input type="date"></td>
+             </tr>
              <tr>
                 <td colspan="2">&nbsp; </td>
              </tr>
@@ -91,7 +126,6 @@ if(isset($_POST['btncerrar']))
                 <td colspan="2"><input type="submit" name="btnadd" value="Guardar"></td>
                 <input type="hidden" name="btnguardar" value="frmadd">
              </tr>
-             <input type="date">
            </form>
         </table>        
         
