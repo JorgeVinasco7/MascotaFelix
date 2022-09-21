@@ -34,11 +34,21 @@ if ((isset($_POST["btnguardar"])) && ($_POST["btnguardar"] == "frmadd")) {
         echo '<script>window.location="AgregarUsuario.php"</script>';
     }
     else{
-        $tp=$_POST ['Tipo_usu'];
-        $sqladd=" INSERT INTO tipo_usuario(tipo_usuario) VALUES ('$tp') ";
+        $iden=$_POST ['Doc'];
+        $nombre=$_POST ['Nom'];
+        $apellidos=$_POST ['Ape'];
+        $direccion=$_POST ['Dir'];
+        $telefono=$_POST ['Tel'];
+        $correo=$_POST ['Corr'];
+        $password=$_POST ['pass'];
+        $targetaP=$_POST ['Tar'];
+        $TipoUsuario=$_POST ['Id_tp'];
+        $estado=$_POST ['id_estado'];
+
+        $sqladd="INSERT INTO usuario(id_tipo_usuario, id_estado, password, identificacion, nombre, apellido, telefono, correo, dirrecion, tarjeta_profesional`) VALUES ('$iden','$nombre','$apellidos','$direccion','$telefono','$correo','$password','$targetaP','$TipoUsuario','$estado')";
         $query = mysqli_query($mysqli,$sqladd);
         echo '<script>alert ("Registro exitoso");</script>';
-        echo '<script>window.location="AgregarUsuario.php"</script>';
+        echo '<script>window.location="Usuarios.php"</script>';
     }
 }
 
