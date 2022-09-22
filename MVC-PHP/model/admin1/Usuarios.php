@@ -13,7 +13,7 @@ $sql1 = "SELECT * FROM tipo_usuario";
 $tp_usu = mysqli_query($mysqli, $sql1) or die(mysqli_error());
 $usua1 = mysqli_fetch_assoc($tp_usu);
 
-$sql2 = "SELECT * FROM usuario";
+$sql2 = "SELECT * FROM estado WHERE id_estado <3";
 $tp_usu2 = mysqli_query($mysqli, $sql2) or die(mysqli_error());
 $usua2 = mysqli_fetch_assoc($tp_usu2);
 ?>
@@ -29,7 +29,7 @@ if ((isset($_POST["btnguardar"])) && ($_POST["btnguardar"] == "frmadd")) {
         echo '<script>window.location="AgregarUsuario.php"</script>';
     }
     else
-       if($_POST['Doc']=="" || $_POST['Nom']=="" || $_POST['Ape']=="" || $_POST['Dir']=="" || $_POST['Tel']=="" || $_POST['Corr']=="" || $_POST['pass']=="" || $_POST['Tar']=="" || $_POST['Id_tp']=="" || $_POST['id_estado']==""){
+       if($_POST['Doc']=="" || $_POST['Nom']=="" || $_POST['Ape']=="" || $_POST['Dir']=="" || $_POST['Tel']=="" || $_POST['Corr']=="" || $_POST['pass']=="" || $_POST['Tar']=="" || $_POST['id_tp']=="" || $_POST['id_estado']==""){
         echo '<script>alert ("Existen campos vacios");</script>';
         echo '<script>window.location="AgregarUsuario.php"</script>';
     }
@@ -42,10 +42,10 @@ if ((isset($_POST["btnguardar"])) && ($_POST["btnguardar"] == "frmadd")) {
         $correo=$_POST ['Corr'];
         $password=$_POST ['pass'];
         $targetaP=$_POST ['Tar'];
-        $TipoUsuario=$_POST ['Id_tp'];
-        $estado=$_POST ['id_estado'];
+        $TipoUsuario=$_POST ['id_tp'];
+        $id_estado=$_POST ['id_estado'];
 
-        $sqladd="INSERT INTO usuario(id_tipo_usuario, id_estado, password, identificacion, nombre, apellido, telefono, correo, dirrecion, tarjeta_profesional`) VALUES ('$iden','$nombre','$apellidos','$direccion','$telefono','$correo','$password','$targetaP','$TipoUsuario','$estado')";
+        $sqladd="INSERT INTO usuario(id_tipo_usuario,id_estado, password,identificacion, nombre,apellido,telefono,correo,dirrecion,tarjeta_profesional) VALUES('$TipoUsuario','$id_estado','$password','$iden','$nombre','$apellidos','$telefono','$correo','$direccion','$targetaP')";
         $query = mysqli_query($mysqli,$sqladd);
         echo '<script>alert ("Registro exitoso");</script>';
         echo '<script>window.location="Usuarios.php"</script>';
@@ -94,7 +94,7 @@ if(isset($_POST['btncerrar']))
                 <td colspan="2">Tipos de usuarios</td>
              </tr>
              <tr>
-                <td>Identificador:</td>
+                <td>Documento de identidad:</td>
                 <td><input type="text" name="Doc" placeholder="Ingrese su documento"></td>
              </tr>
 
@@ -130,12 +130,12 @@ if(isset($_POST['btncerrar']))
              <tr>
                 <td>Tipo usuario:</td>
                 <td>
-                  <select name="Id_tp">
+                  <select name="id_tp">
                      <option value="">Seleccione una opcion </option>
                      <?php
                      do {                  
                      ?>
-                     <option value="<?php echo($usua1['id_tipo_usuario'])?>"><?php echo($usua1['tipo_usuario'])?>
+                     <option value="<?php echo($usua1['id_tipo_usuario'])?>"><?php echo($usua1['tipo_usuario'])?></option>
                       <?php
                      }while($usua1=mysqli_fetch_assoc($tp_usu));
                       ?>
@@ -151,16 +151,12 @@ if(isset($_POST['btncerrar']))
                      <?php
                      do {                  
                      ?>
-                     <option value="<?php echo($usua2['usuario'])?>"><?php echo($usua2['id_estado'])?>
+                     <option value="<?php echo($usua2['id_estado'])?>"><?php echo($usua2['tipo_estado'])?></option>
                       <?php
                      }while($usua2=mysqli_fetch_assoc($tp_usu2));
                       ?>
                   </select> 
                 </td>
-             </tr>
-             <tr>
-                <td>Fecha:</td>
-                <td> <input type="date"></td>
              </tr>
              <tr>
                 <td colspan="2">&nbsp; </td>
