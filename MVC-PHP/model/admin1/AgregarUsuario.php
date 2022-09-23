@@ -66,21 +66,21 @@ if(isset($_POST['btncerrar']))
 </head>
     <body onload="frmadd.Tipo_usu.focus()">
         <section class="title">
-            <h1>Formulario de creacion tipo usuario:<?php echo $usua['tipo_usuario']?></h1>
+            <h1>Formulario creacion tipo usuario</h1>
         </section>
         <table class="centrar">
            <form method="POST" name="frmadd" autocomplete="off">
              <tr>
-                <td colspan="2"> tipos de usuarios </td>
+                <td colspan="2"> Tipos de usuarios </td>
              </tr>
              <tr>
-                <td>Identificador:</td>
-                <td><input type="text" readonly></td>
+                <td><br>Numero de Documento:</td>
+                <td><br><input type="text" readonly></td>
              </tr>
 
              <tr>
                 <td>Tipo Usuario:</td>
-                <td><input type="text" name="Tipo_usu" placeholder="Ingrese tipo usuario" style="text-transform:uppercase;"></td>
+                <td><input type="text" name="Tipo_usu" placeholder="Ejmplo:si es Administrador, Veterinario...etc" style="text-transform:uppercase;"></td>
              </tr>
 
              <tr>

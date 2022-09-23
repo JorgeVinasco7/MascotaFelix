@@ -43,7 +43,7 @@ if(isset($_POST['btncerrar']))
 </head>
     <body>
         <section class="title">
-            <h1>INTERFAZ    <?php echo $usua['tipo_usuario']?></h1>
+            <h1><?php echo $usua['tipo_usuario']?></h1>
         </section>
     
         <nav class="navegacion">
@@ -67,9 +67,9 @@ if(isset($_POST['btncerrar']))
                 </li>
     
                 <li>
-                    <a href="#">
+                    <a href="Mascota.php">
                         <img src="img/implementar.jpg" alt="" class="imagen">
-                        <span class="text-item">OPCION 3</span>
+                        <span class="text-item">Mascota</span>
                         <span class="down-item"></span>
                     </a>
                 </li>

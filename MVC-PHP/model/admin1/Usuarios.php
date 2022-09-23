@@ -86,7 +86,7 @@ if(isset($_POST['btncerrar']))
 </head>
     <body onload="frmadd.Tipo_usu.focus()">
         <section class="title">
-            <h1>Formulario crear usuarios:<?php echo $usua['tipo_usuario']?></h1>
+            <h1>Formulario crear usuarios</h1>
         </section>
         <table class="centrar">
            <form method="POST" name="frmadd" autocomplete="off">
@@ -94,8 +94,8 @@ if(isset($_POST['btncerrar']))
                 <td colspan="2">Tipos de usuarios</td>
              </tr>
              <tr>
-                <td>Documento de identidad:</td>
-                <td><input type="text" name="Doc" placeholder="Ingrese su documento"></td>
+                <td><br>Documento de identidad:</td>
+                <td><br><input type="text" name="Doc" placeholder="Ingrese su documento"></td>
              </tr>
 
              <tr>
