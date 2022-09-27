@@ -53,7 +53,7 @@ if(isset($_POST['btncerrar']))
                 <li class="first-item">
                     <a href="AgregarUsuario.php">
                         <img src="img/analisis.png" alt="" class="imagen">
-                        <span class="text-item">Crear tipo de usuario</span>
+                        <span class="text-item">CREAR TIPO DE USUARIOS</span>
                         <span class="down-item"></span>
                     </a>
                 </li>
@@ -61,7 +61,7 @@ if(isset($_POST['btncerrar']))
                 <li>
                     <a href="Usuarios.php">
                         <img src="img/ejecucion.png" alt="" class="imagen">
-                        <span class="text-item">Crear Usuarios</span>
+                        <span class="text-item">CREAR USUARIO</span>
                         <span class="down-item"></span>
                     </a>
                 </li>
@@ -69,31 +69,31 @@ if(isset($_POST['btncerrar']))
                 <li>
                     <a href="Mascota.php">
                         <img src="img/implementar.jpg" alt="" class="imagen">
-                        <span class="text-item">Mascota</span>
+                        <span class="text-item">MASCOTAS</span>
                         <span class="down-item"></span>
                     </a>
                 </li>
     
                 <li>
-                    <a href="#">
+                    <a href="Visitas.php">
                         <img src="img/planear.png" alt="" class="imagen">
-                        <span class="text-item">OPCION 4</span>
+                        <span class="text-item">VISITAS</span>
                         <span class="down-item"></span>
                     </a>
                 </li>
     
                 <li>
-                    <a href="#">
-                        <img src="" alt="" class="imagen">
-                        <span class="text-item">OPCION 5</span>
+                    <a href="Afiliacion.php">
+                        <img src="img/planear.png" alt="" class="imagen">
+                        <span class="text-item">AFILIACION</span>
                         <span class="down-item"></span>
                     </a>
                 </li>
     
                 <li class="first-item">
-                    <a href="#">
+                    <a href="Medicamentos.php">
                         <img src="img/analisis.png" alt="" class="imagen">
-                        <span class="text-item">OPCION 6</span>
+                        <span class="text-item">MEDICAMENTOS</span>
                         <span class="down-item"></span>
                     </a>
                 </li>
