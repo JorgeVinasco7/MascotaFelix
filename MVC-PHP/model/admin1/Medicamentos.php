@@ -12,14 +12,14 @@ if ((isset($_POST["btnguardar"])) && ($_POST["btnguardar"] == "frmadd")) {
        //si hay datos vacios
        if($_POST['Medi']==""){
         echo '<script>alert ("Existen campos vacios");</script>';
-        echo '<script>window.location="AgregarUsuario.php"</script>';
+        echo '<script>window.location="index.php"</script>';
     }
     else{
         $Medicamento=$_POST ['Medi'];
         $sqladd="INSERT INTO medicamentos(medicamento) VALUES ('$Medicamento')";
         $query = mysqli_query($mysqli,$sqladd);
         echo '<script>alert ("Registro exitoso");</script>';
-        echo '<script>window.location="Usuarios.php"</script>';
+        echo '<script>window.location="index.php"</script>';
     }
 }
 

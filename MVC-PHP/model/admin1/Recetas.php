@@ -8,40 +8,31 @@ $usuarios = mysqli_query($mysqli, $sql) or die(mysqli_error());
 $usua = mysqli_fetch_assoc($usuarios);
 ?>
 <?php
-$sql1 = "SELECT * FROM tipo_mascota WHERE  id_tipo_mascota <4";
-$tipo_masco = mysqli_query($mysqli, $sql1) or die(mysqli_error());
-$masco1 = mysqli_fetch_assoc($tipo_masco);
+//consulta nombre
+$sql1 = "SELECT * FROM mascota WHERE id_tipo_mascota";
+$Nom_Mas = mysqli_query($mysqli, $sql1) or die(mysqli_error());
+$nombre1 = mysqli_fetch_assoc($Nom_Mas);
+
+//consulta medicamento
+$sql2 = "SELECT * FROM medicamentos WHERE id_medicamentos";
+$medicamento = mysqli_query($mysqli, $sql2) or die(mysqli_error());
+$medi1 = mysqli_fetch_assoc($medicamento);
 ?>
-<?php
-$sql2 = "SELECT * FROM usuario WHERE  identificacion";
-$docu_iden = mysqli_query($mysqli, $sql2) or die(mysqli_error());
-$masco2 = mysqli_fetch_assoc($docu_iden);
-?>
+
 <?php
 if ((isset($_POST["btnguardar"])) && ($_POST["btnguardar"] == "frmadd")) {
-        $Id_Dueño=$_POST ['Iden'];
-        $sqladd="SELECT *FROM usuario WHERE identificacion='$Id_Dueño'";
-        $query = mysqli_query($mysqli,$sqladd);
-        $fila = mysqli_fetch_assoc($query);
-    if($fila){
-        echo '<script>alert (" El usuario ya existe ");</script>';
-        echo '<script>window.location="index.php"</script>';
-    }
-    else
-       if($_POST['Iden']=="" || $_POST['tipo_mascota']=="" || $_POST['NomM']=="" || $_POST['razaM']=="" || $_POST['ColM']==""){
+
+    if($_POST['NomMascota']=="" || $_POST['Medi']==""){
         echo '<script>alert ("Existen campos vacios");</script>';
         echo '<script>window.location="index.php"</script>';
     }
     else{
-        $Id_Dueño=$_POST ['Iden'];
-        $Tipo_Mas=$_POST ['tipo_mascota'];
-        $Nmascota=$_POST ['NomM'];
-        $Rmascota=$_POST ['razaM'];
-        $Cmascota=$_POST ['ColM'];
-        $sqladd="INSERT INTO mascota(id_dueño,id_tipo_mascota,nombre,raza,color) VALUES('$Id_Dueño','$Tipo_Mas','$Nmascota','$Rmascota','$Cmascota')";
+        $Nom_Mascota=$_POST ['NomMascota'];
+        $medicamento=$_POST ['Medi'];
+        $sqladd="INSERT INTO receta(id_visita,id_medicamento) VALUES ('$Nom_Mascota', '$medicamento')";
         $query = mysqli_query($mysqli,$sqladd);
         echo '<script>alert ("Registro exitoso");</script>';
-        echo '<script>window.location="Mascota.php"</script>';
+        echo '<script>window.location="index.php"</script>';
     }
 }
 
@@ -79,60 +70,55 @@ if(isset($_POST['btncerrar']))
 </head>
     <body onload="frmadd.Tipo_usu.focus()">
         <section class="title">
-            <h1>Formulario para Mascotas</h1>
+            <h1>Formulario Recetas.</h1>
         </section>
         <table class="centrar">
            <form method="POST" name="frmadd" autocomplete="off">
              <tr>
-                <td colspan="2">Tipos de Mascota</td>
+                <td colspan="2">Recetas para Mascota</td>
              </tr>
              <tr>
-                <td><br>Nombre:</td>
-                <td><br><input type="text" name="NomM" placeholder="Nombre de la mascota" style="text-transform:uppercase;"></td>
-             </tr>
-             <tr>
-                <td>Raza:</td>
-                <td><input type="text" name="razaM" placeholder="Raza Mascota" style="text-transform:uppercase;"></td>
-             </tr>
-             <tr>
-                <td>Color:</td>
-                <td><input type="text" name="ColM" placeholder="Color de la mascota" style="text-transform:uppercase;"></td>
-             </tr>
-             <tr>
-                <td>Documento:</td>
+                <td><br>Nombre Mascota:</td>
                 <td>
-                  <select name="Iden">
+                  <br>
+                  <select name="NomMascota">
                      <option value="">Seleccione una opcion </option>
                      <?php
                      do {                  
                      ?>
-                     <option value="<?php echo($masco2['id_usuario'])?>"><?php echo($masco2['identificacion'])?></option>
+                     <option value="<?php echo($nombre1['id_tipo_usuario'])?>"><?php echo($nombre1['nombre'])?></option>
                       <?php
-                     }while($masco2=mysqli_fetch_assoc($docu_iden));
+                     }while($nombre1=mysqli_fetch_assoc($Nom_Mas));
+                      ?>
+                  </select> 
+                </td>
+             </tr>
+
+             <tr>
+                <td>Medicamentos:</td>
+                <td>
+                  <select name="Medi">
+                     <option value="">Seleccione una opcion </option>
+                     <?php
+                     do {                  
+                     ?>
+                     <option value="<?php echo($medi1['id_medicamentos'])?>"><?php echo($medi1['medicamento'])?></option>
+                      <?php
+                     }while($medi1=mysqli_fetch_assoc($medicamento));
                       ?>
                   </select> 
                 </td>
              </tr>
              <tr>
-                <td>Tipo Mascota:</td>
-                <td>
-                  <select name="tipo_mascota">
-                     <option value="">Seleccione una opcion </option>
-                     <?php
-                     do {                  
-                     ?>
-                     <option value="<?php echo($masco1['id_tipo_mascota'])?>"><?php echo($masco1['tipo_mascota'])?></option>
-                      <?php
-                     }while($masco1=mysqli_fetch_assoc($tipo_masco));
-                      ?>
-                  </select> 
-                </td>
+                <td colspan="2">&nbsp; </td>
              </tr>
+
              <tr>
-                <td colspan="2"><br><input type="submit" name="btnadd" value="Guardar"></td>
+                <td colspan="2"><input type="submit" name="btnadd" value="Guardar"></td>
                 <input type="hidden" name="btnguardar" value="frmadd">
              </tr>
            </form>
-        </table>               
+        </table>        
+        
     </body>
 </html>

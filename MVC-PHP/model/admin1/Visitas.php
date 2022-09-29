@@ -31,12 +31,12 @@ if ((isset($_POST["btnguardar"])) && ($_POST["btnguardar"] == "frmadd")) {
 
     if($fila){
         echo '<script>alert (" El usuario ya existe ");</script>';
-        echo '<script>window.location="Visitas.php"</script>';
+        echo '<script>window.location="index.php"</script>';
     }
     else
        if($_POST['Docu']=="" || $_POST['Nom']=="" || $_POST['EstaM']=="" || $_POST['Tem']=="" || $_POST['Peso']=="" || $_POST['FreR']=="" || $_POST['FreC']=="" || $_POST['Docu']=="" || $_POST['EstaAnimo']=="" || $_POST['Reco']=="" || $_POST['CostoVisita']=="" || $_POST['fecha_']==""){
         echo '<script>alert ("Existen campos vacios");</script>';
-        echo '<script>window.location="Visitas.php"</script>';
+        echo '<script>window.location="index.php"</script>';
     }
     else{
         $doc=$_POST ['Docu'];

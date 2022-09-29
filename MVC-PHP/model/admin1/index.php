@@ -8,29 +8,27 @@ $usuarios = mysqli_query($mysqli, $sql) or die(mysqli_error());
 $usua = mysqli_fetch_assoc($usuarios);
 ?>
 <span id="button-menu" class="fa fa-bars"></span>
-		<span class="usuario"> <?php echo $usua['tipo_usuario']?></span>
+		<br><span class="usuario"><?php echo $usua['tipo_usuario']?></span>
 		<span class="usuario"> 
-			<a href="../../controller/salir.php"><img src="../../controller/image/salir.png" width=30></a>
-			<?php echo $usua['nombre']?>
+        <?php
+        $signo=":"; 
+        echo $signo;
+        echo $usua['nombre'];
+        echo $usua['apellido'];  
+        ?>
+        <a href="../../controller/salir.php">Cerrar Sesion:<img src="../../controller/image/salir.png" width=50></a>
 		</span>
 <?php 
-/* agregamos un mensaje en el codigo para actualizar en git y asi poderlo manejar este codigo va subido a la nube del GibHub*/
+/* agregamos un mensaje en el codigo */
 if(isset($_POST['btncerrar']))
 {
 	session_destroy();
-
-   
     header('location: ../../index.html');
 }
 	
 ?>
 
 </div>
-
-</div>
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -45,11 +43,8 @@ if(isset($_POST['btncerrar']))
         <section class="title">
             <h1><?php echo $usua['tipo_usuario']?></h1>
         </section>
-    
         <nav class="navegacion">
-           
             <ul class="menu wrapper" >
-    
                 <li class="first-item">
                     <a href="AgregarUsuario.php">
                         <img src="img/analisis.png" alt="" class="imagen">
@@ -97,49 +92,14 @@ if(isset($_POST['btncerrar']))
                         <span class="down-item"></span>
                     </a>
                 </li>
-    
                 <li>
-                    <a href="#">
-                        <img src="" alt="" class="imagen">
-                        <span class="text-item">OPCION 7</span>
+                    <a href="Recetas.php">
+                        <img src="img/ejecucion.png" alt="" class="imagen">
+                        <span class="text-item">RECETAS</span>
                         <span class="down-item"></span>
                     </a>
-                </li>
-    
-                <li>
-                    <a href="#">
-                        <img src="" alt="" class="imagen">
-                        <span class="text-item">OPCION 8</span>
-                        <span class="down-item"></span>
-                    </a>
-                </li>
-    
-                <li>
-                    <a href="#">
-                        <img src="" alt="" class="imagen">
-                        <span class="text-item">OPCION 9</span>
-                        <span class="down-item"></span>
-                    </a>
-                </li>
-    
-                <li>
-                    <a href="#">
-                        <img src="" alt="" class="imagen">
-                        <span class="text-item">OPCION 10</span>
-                        <span class="down-item"></span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <img src="" alt="" class="imagen">
-                        <span class="text-item">OPCION 11</span>
-                        <span class="down-item"></span>
-                    </a>
-                </li>
-                
-            </ul>
-            
+                </li>            
+            </ul> 
         </nav>
     </body>
 </html>

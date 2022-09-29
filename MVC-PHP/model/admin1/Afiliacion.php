@@ -19,7 +19,7 @@ if ((isset($_POST["btnguardar"])) && ($_POST["btnguardar"] == "frmadd")) {
         
         if($_POST['Nombre']=="" && $_POST['Fecha']==""){
         echo '<script>alert ("Existen campos vacios");</script>';
-        echo '<script>window.location="Afiliacion.php"</script>';
+        echo '<script>window.location="index.php"</script>';
           }
         else{
         $Nombre=$_POST ['Nombre'];
@@ -27,7 +27,7 @@ if ((isset($_POST["btnguardar"])) && ($_POST["btnguardar"] == "frmadd")) {
         $sqladd="INSERT INTO afiliacion(fecha_afiliacion,id_mascota) VALUES ('$fecha','$Nombre')";
         $query = mysqli_query($mysqli,$sqladd);
         echo '<script>alert ("Registro exitoso");</script>';
-        echo '<script>window.location="Afiliacion.php"</script>';
+        echo '<script>window.location="index.php"</script>';
     }
 }
 

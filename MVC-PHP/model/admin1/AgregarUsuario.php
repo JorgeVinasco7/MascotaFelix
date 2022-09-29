@@ -16,12 +16,12 @@ if ((isset($_POST["btnguardar"])) && ($_POST["btnguardar"] == "frmadd")) {
     $fila = mysqli_fetch_assoc($query);
     if($fila){
         echo '<script>alert (" El usuario ya existe ");</script>';
-        echo '<script>window.location="AgregarUsuario.php"</script>';
+        echo '<script>window.location="index.php"</script>';
     }
     else 
        if($_POST['Tipo_usu']==""){
         echo '<script>alert ("Existen campos vacios");</script>';
-        echo '<script>window.location="AgregarUsuario.php"</script>';
+        echo '<script>window.location="index.php"</script>';
     }
     else{
         $tp=$_POST ['Tipo_usu'];
